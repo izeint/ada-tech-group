@@ -4,11 +4,11 @@ import time
 # ================= CONFIG =================
 st.set_page_config(
     page_title="Ada-Tech Group",
-    page_icon="🚀",
+    page_icon="🌐",
     layout="wide",
 )
 
-PRIMARY = "#00FFF7"
+PRIMARY = "#1E90FF"   # BLEU
 BG = "#0A0A0A"
 TEXT = "#FFFFFF"
 
@@ -40,7 +40,7 @@ body {{
     margin-top: 30px;
     padding: 16px 38px;
     background: {PRIMARY};
-    color: #000;
+    color: white;
     font-size: 18px;
     border-radius: 40px;
     display: inline-block;
@@ -58,20 +58,30 @@ body {{
 }}
 
 .service-card {{
-    background: linear-gradient(135deg, #1a1a1a, #111);
+    background: linear-gradient(135deg, #0f1c2e, #0a2540);
     border-radius: 25px;
-    padding: 40px;
-    text-align: center;
+    overflow: hidden;
     transition: 0.4s;
     height: 100%;
 }}
 
 .service-card:hover {{
     transform: translateY(-15px);
-    box-shadow: 0 0 40px rgba(0,255,247,0.35);
+    box-shadow: 0 0 40px rgba(30,144,255,0.5);
 }}
 
-.service-card h3 {{
+.service-card img {{
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}}
+
+.service-content {{
+    padding: 25px;
+    text-align: center;
+}}
+
+.service-content h3 {{
     color: {PRIMARY};
 }}
 
@@ -93,24 +103,42 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ================= SERVICES =================
-st.markdown("<div class='section'><h2>🚀 Nos Services</h2></div>", unsafe_allow_html=True)
+st.markdown("<div class='section'><h2>🔵 Nos Services</h2></div>", unsafe_allow_html=True)
 
 col1, col2, col3, col4 = st.columns(4)
 
 services = [
-    ("🌐", "Développement Web", "Sites modernes, performants et sécurisés."),
-    ("📱", "Développement Mobile", "Applications Android & iOS sur mesure."),
-    ("🎓", "Formation", "Formations pratiques en technologies modernes."),
-    ("🚚", "Logistique", "Solutions digitales pour la livraison de colis."),
+    (
+        "Développement Web",
+        "Sites modernes, sécurisés et performants.",
+        "https://images.unsplash.com/photo-1521737604893-d14cc237f11d"
+    ),
+    (
+        "Développement Mobile",
+        "Applications Android & iOS sur mesure.",
+        "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9"
+    ),
+    (
+        "Formation",
+        "Formations pratiques en technologies modernes.",
+        "https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
+    ),
+    (
+        "Logistique de livraison",
+        "Solutions digitales pour la gestion et livraison de colis.",
+        "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d"
+    ),
 ]
 
-for col, (icon, title, desc) in zip([col1, col2, col3, col4], services):
+for col, (title, desc, img) in zip([col1, col2, col3, col4], services):
     with col:
         st.markdown(f"""
         <div class="service-card">
-            <h1>{icon}</h1>
-            <h3>{title}</h3>
-            <p>{desc}</p>
+            <img src="{img}" />
+            <div class="service-content">
+                <h3>{title}</h3>
+                <p>{desc}</p>
+            </div>
         </div>
         """, unsafe_allow_html=True)
         time.sleep(0.1)
@@ -121,7 +149,7 @@ st.markdown("""
     <h2>💡 Notre Vision</h2>
     <p>
         Ada-Tech Group accompagne les entreprises et particuliers
-        dans leur transformation digitale grâce à des solutions
+        dans leur transformation digitale à travers des solutions
         innovantes, fiables et adaptées à leurs besoins.
     </p>
 </div>
