@@ -8,9 +8,8 @@ st.set_page_config(
     layout="wide",
 )
 
-PRIMARY = "#1E90FF"   # BLEU
 BG = "#0A0A0A"
-TEXT = "#FFFFFF"
+TEXT = "#EAEAEA"
 
 # ================= CSS =================
 st.markdown(f"""
@@ -20,37 +19,47 @@ body {{
     color: {TEXT};
 }}
 
+.header {{
+    display: flex;
+    align-items: center;
+    padding: 20px 40px;
+}}
+
+.logo img {{
+    height: 55px;
+}}
+
 .hero {{
-    padding: 120px 40px;
+    padding: 100px 40px;
     text-align: center;
 }}
 
 .hero h1 {{
     font-size: 4rem;
-    color: {PRIMARY};
-    text-shadow: 0 0 30px {PRIMARY};
+    color: white;
+    text-shadow: 0 0 25px rgba(255,255,255,0.25);
 }}
 
 .hero p {{
     font-size: 1.4rem;
-    opacity: 0.85;
+    opacity: 0.8;
 }}
 
 .cta {{
     margin-top: 30px;
     padding: 16px 38px;
-    background: {PRIMARY};
+    background: #1a1a1a;
     color: white;
     font-size: 18px;
     border-radius: 40px;
     display: inline-block;
-    box-shadow: 0 0 25px {PRIMARY};
+    box-shadow: 0 0 20px rgba(255,255,255,0.1);
     transition: 0.4s;
 }}
 
 .cta:hover {{
     transform: scale(1.1);
-    box-shadow: 0 0 60px {PRIMARY};
+    box-shadow: 0 0 40px rgba(255,255,255,0.25);
 }}
 
 .section {{
@@ -58,31 +67,27 @@ body {{
 }}
 
 .service-card {{
-    background: linear-gradient(135deg, #0f1c2e, #0a2540);
+    background: #111;
     border-radius: 25px;
     overflow: hidden;
     transition: 0.4s;
-    height: 100%;
 }}
 
 .service-card:hover {{
     transform: translateY(-15px);
-    box-shadow: 0 0 40px rgba(30,144,255,0.5);
+    box-shadow: 0 0 30px rgba(255,255,255,0.2);
 }}
 
 .service-card img {{
     width: 100%;
     height: 220px;
     object-fit: cover;
+    filter: grayscale(100%);
 }}
 
 .service-content {{
     padding: 25px;
     text-align: center;
-}}
-
-.service-content h3 {{
-    color: {PRIMARY};
 }}
 
 .footer {{
@@ -91,6 +96,15 @@ body {{
     opacity: 0.6;
 }}
 </style>
+""", unsafe_allow_html=True)
+
+# ================= HEADER (LOGO) =================
+st.markdown("""
+<div class="header">
+    <div class="logo">
+        <img src="logo.png">
+    </div>
+</div>
 """, unsafe_allow_html=True)
 
 # ================= HERO =================
@@ -103,38 +117,22 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ================= SERVICES =================
-st.markdown("<div class='section'><h2>🔵 Nos Services</h2></div>", unsafe_allow_html=True)
+st.markdown("<div class='section'><h2>Nos Services</h2></div>", unsafe_allow_html=True)
 
 col1, col2, col3, col4 = st.columns(4)
 
 services = [
-    (
-        "Développement Web",
-        "Sites modernes, sécurisés et performants.",
-        "https://images.unsplash.com/photo-1521737604893-d14cc237f11d"
-    ),
-    (
-        "Développement Mobile",
-        "Applications Android & iOS sur mesure.",
-        "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9"
-    ),
-    (
-        "Formation",
-        "Formations pratiques en technologies modernes.",
-        "https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
-    ),
-    (
-        "Logistique de livraison",
-        "Solutions digitales pour la gestion et livraison de colis.",
-        "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d"
-    ),
+    ("Développement Web", "Sites modernes et performants.", "https://images.unsplash.com/photo-1521737604893-d14cc237f11d"),
+    ("Développement Mobile", "Applications Android & iOS.", "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9"),
+    ("Formation", "Formations tech professionnelles.", "https://images.unsplash.com/photo-1522202176988-66273c2fd55f"),
+    ("Logistique", "Livraison et gestion de colis.", "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d"),
 ]
 
 for col, (title, desc, img) in zip([col1, col2, col3, col4], services):
     with col:
         st.markdown(f"""
         <div class="service-card">
-            <img src="{img}" />
+            <img src="{img}">
             <div class="service-content">
                 <h3>{title}</h3>
                 <p>{desc}</p>
@@ -142,28 +140,6 @@ for col, (title, desc, img) in zip([col1, col2, col3, col4], services):
         </div>
         """, unsafe_allow_html=True)
         time.sleep(0.1)
-
-# ================= VISION =================
-st.markdown("""
-<div class="section">
-    <h2>💡 Notre Vision</h2>
-    <p>
-        Ada-Tech Group accompagne les entreprises et particuliers
-        dans leur transformation digitale à travers des solutions
-        innovantes, fiables et adaptées à leurs besoins.
-    </p>
-</div>
-""", unsafe_allow_html=True)
-
-# ================= CONTACT =================
-st.markdown("""
-<div class="section">
-    <h2>📩 Contactez-nous</h2>
-    <p>Prêt à transformer votre business ? Parlons-en.</p>
-</div>
-""", unsafe_allow_html=True)
-
-st.button("📞 Nous contacter")
 
 # ================= FOOTER =================
 st.markdown("""
