@@ -1,23 +1,68 @@
 import streamlit as st
-from PIL import Image
 
-# Charger le logo
-logo = Image.open("3182dbc4-7c69-4245-8bd0-88799d82302d.png")
-st.image(logo, width=300)  # Ajuste la taille si nécessaire
+# Configuration de la page
+st.set_page_config(
+    page_title="Ada-Tech Group",
+    page_icon="🌐",
+    layout="centered",
+    initial_sidebar_state="expanded"
+)
 
-# Titre et sous-titre
+# Couleurs personnalisées
+primary_color = "#00BFFF"  # accent bleu
+background_color = "#1B263B"  # bleu nuit
+text_color = "#F0F0F0"  # texte clair
+
+# CSS pour le style
+st.markdown(
+    f"""
+    <style>
+        body {{
+            background-color: {background_color};
+            color: {text_color};
+            font-family: 'Arial', sans-serif;
+        }}
+        .stButton>button {{
+            background-color: {primary_color};
+            color: {background_color};
+            font-weight: bold;
+        }}
+        h1, h2, h3 {{
+            color: {primary_color};
+        }}
+        .service {{
+            background-color: #0D1B2A;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# Titre principal
 st.title("Bienvenue sur Ada-Tech Group")
-st.subheader("Notre technologie, votre expérience numérique idyllique")
+st.subheader("Découvrez nos services et solutions technologiques")
 
-# Liste des services
-services = [
-    "Développement web",
-    "Applications mobiles",
-    "Formation",
-    "Logistique de livraison de colis",
-    "Génie civil (bientôt disponible)"
-]
+# Connexion simple
+username = st.text_input("Nom d'utilisateur")
+password = st.text_input("Mot de passe", type="password")
 
-st.write("Voici nos services :")
-for service in services:
-    st.write(f"- {service}")
+if st.button("Se connecter"):
+    if username == "admin" and password == "1234":
+        st.success(f"Connexion réussie ! Bienvenue {username} sur Ada-Tech Group.")
+
+        st.write("### Nos Services :")
+        services = [
+            "Développement Web",
+            "Développement Mobile",
+            "Formation",
+            "Logistique et Livraison de Colis",
+            "Génie Civil (à venir)"
+        ]
+
+        for service in services:
+            st.markdown(f'<div class="service">- {service}</div>', unsafe_allow_html=True)
+    else:
+        st.error("Nom d'utilisateur ou mot de passe incorrect.")
