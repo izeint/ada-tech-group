@@ -102,7 +102,8 @@ body {{
 st.markdown("""
 <div class="header">
     <div class="logo">
-        <img src="logo.png">
+    st.image("logo.png", width=180)
+
     </div>
 </div>
 """, unsafe_allow_html=True)
