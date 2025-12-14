@@ -1,20 +1,23 @@
 import streamlit as st
+from PIL import Image
 
-# Titre du site
+# Charger le logo
+logo = Image.open("3182dbc4-7c69-4245-8bd0-88799d82302d.png")
+st.image(logo, width=300)  # Ajuste la taille si nécessaire
+
+# Titre et sous-titre
 st.title("Bienvenue sur Ada-Tech Group")
-st.subheader("Découvrez nos services et solutions technologiques")
+st.subheader("Notre technologie, votre expérience numérique idyllique")
 
-# Connexion simple
-username = st.text_input("Nom d'utilisateur")
-password = st.text_input("Mot de passe", type="password")
+# Liste des services
+services = [
+    "Développement web",
+    "Applications mobiles",
+    "Formation",
+    "Logistique de livraison de colis",
+    "Génie civil (bientôt disponible)"
+]
 
-if st.button("Se connecter"):
-    if username == "admin" and password == "1234":
-        st.success(f"Connexion réussie ! Bienvenue {username} sur Ada-Tech Group.")
-        st.write("Voici nos services :")
-        st.write("- Développement web")
-        st.write("- Applications mobiles")
-        st.write("- Data Science et Analyse")
-        st.write("- Maintenance et support")
-    else:
-        st.error("Nom d'utilisateur ou mot de passe incorrect.")
+st.write("Voici nos services :")
+for service in services:
+    st.write(f"- {service}")
